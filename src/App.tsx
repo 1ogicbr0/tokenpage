@@ -4,8 +4,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  NavLink,
 } from "react-router-dom";
 import PublicToken from "./screens/PublicToken/PublicToken";
 import ShareToken from "./screens/ShareToken/ShareToken";
