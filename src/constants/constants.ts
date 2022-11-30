@@ -34,4 +34,15 @@ const documentTypes = Object.freeze([
 	},
 ]);
 
-export { documentTypes,documentPathTypes };
+const tokenStatuses = Object.freeze({
+	LOADING: "LOADING",
+	EMPTY: "EMPTY",
+	EXIST: "EXIST"
+})
+
+const viewTokenTypes = Object.freeze({
+	PUBLIC_TOKEN: "PUBLIC_TOKEN",
+	SHARED_TOKEN: "SHARED_TOKEN",
+})
+
+export { documentTypes, documentPathTypes, tokenStatuses, viewTokenTypes };

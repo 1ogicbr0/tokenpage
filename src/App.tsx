@@ -1,20 +1,22 @@
 import React from "react";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
-import PublicToken from "./screens/PublicToken/PublicToken";
-import ShareToken from "./screens/ShareToken/ShareToken";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { viewTokenTypes } from "./constants/constants";
+import ViewToken from "./screens/ViewToken/ViewToken";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/token/:tokenId" element={<PublicToken />} />
-          <Route path="/shared/:shareHash" element={<ShareToken />} />
+          <Route
+            path="/token/:tokenId"
+            element={<ViewToken viewTokenType={viewTokenTypes.PUBLIC_TOKEN} />}
+          />
+          <Route
+            path="/shared/:shareHash"
+            element={<ViewToken viewTokenType={viewTokenTypes.SHARED_TOKEN} />}
+          />
         </Routes>
       </Router>
     </div>
