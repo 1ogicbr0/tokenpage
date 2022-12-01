@@ -585,7 +585,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                       <img
                         alt="gallery"
                         src={url}
-                        className="h-64 rounded-lg"
+                        className="h-64 rounded-lg object-cover"
                       />
                     </div>
                   ))}
@@ -630,7 +630,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
       {tokenStatus === tokenStatuses.EXIST
         ? renderTokenData()
         : renderContentLoader()}
-      {/* <Modal
+      <Modal
         isOpen={tokenStatus === tokenStatuses.EMPTY}
         contentLabel="Example Modal"
         style={{
@@ -652,7 +652,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
           <TbSearchOff className="text-3xl" />
           <p className="text-3xl font-bold text-gray-600 ml-4">Unknown token</p>
         </div>
-      </Modal> */}
+      </Modal>
     </div>
   );
 }
