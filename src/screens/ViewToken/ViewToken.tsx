@@ -128,6 +128,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                 (d: any) => d.path === document.path && d.list.push(document)
               );
             });
+            document.title = res?.data?.result?.token?.name;
             setTokenStatus(tokenStatuses.EXIST);
             setGalleryList(
               res?.data?.result.documents
@@ -174,6 +175,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                 (d: any) => d.path === document.path && d.list.push(document)
               );
             });
+            document.title = res?.data?.result?.token?.name;
             setTokenStatus(tokenStatuses.EXIST);
             setGalleryList(
               res?.data?.result.documents
@@ -314,12 +316,12 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
               <p className="ml-6 font-semibold text-3xl">Specifications</p>
             </div>
             <div className="py-8">
-                <ContentLoader viewBox="0 0 224 28" className="w-56 ml-4">
-                  <rect x="0" y="0" rx="8" ry="8" width="224" height="28 " />
-                </ContentLoader>
-                <ContentLoader viewBox="0 0 192 28" className="w-48 ml-4 mt-4">
-                  <rect x="0" y="0" rx="8" ry="8" width="192" height="28 " />
-                </ContentLoader>
+              <ContentLoader viewBox="0 0 224 28" className="w-56 ml-4">
+                <rect x="0" y="0" rx="8" ry="8" width="224" height="28 " />
+              </ContentLoader>
+              <ContentLoader viewBox="0 0 192 28" className="w-48 ml-4 mt-4">
+                <rect x="0" y="0" rx="8" ry="8" width="192" height="28 " />
+              </ContentLoader>
             </div>
             <div className="flex flex-row justify-between flex-wrap pb-8">
               <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
