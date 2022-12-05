@@ -493,15 +493,16 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                   The Packagers
                 </p>
               </p>
-              {!!tokenData?.token?.value && !!tokenData?.token?.currency && (
-                <p className="text-xl text-gray-500 font-medium flex-row flex">
-                  Price:
-                  <p className="text-gray-900 ml-4 font-semibold">{`${tokenData?.token?.value} ${tokenData?.token?.currency}`}</p>
-                </p>
-              )}
+              {typeof tokenData?.token?.value !== "undefined" &&
+                typeof tokenData?.token?.currency !== "undefined" && (
+                  <p className="text-xl text-gray-500 font-medium flex-row flex">
+                    Price:
+                    <p className="text-gray-900 ml-4 font-semibold">{`${tokenData?.token?.value} ${tokenData?.token?.currency}`}</p>
+                  </p>
+                )}
             </div>
             <div className="flex flex-row justify-between flex-wrap pb-8">
-              {!!tokenData?.token?.lengthInMeter && (
+              {typeof tokenData?.token?.lengthInMeter !== "undefined" && (
                 <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-length rounded-full flex justify-center items-center flex-col">
                     <CgRuler className="text-4xl -rotate-45" />
@@ -512,7 +513,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                   </div>
                 </div>
               )}
-              {!!tokenData?.token?.depthInMeter && (
+              {typeof tokenData?.token?.depthInMeter !== "undefined" && (
                 <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-depth rounded-full flex justify-center items-center flex-col">
                     <AiOutlineColumnHeight className="text-4xl" />
@@ -523,7 +524,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                   </div>
                 </div>
               )}
-              {!!tokenData?.token?.widthInMeter && (
+              {typeof tokenData?.token?.widthInMeter !== "undefined" && (
                 <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-width rounded-full flex justify-center items-center flex-col">
                     <AiOutlineColumnWidth className="text-4xl" />
@@ -534,7 +535,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                   </div>
                 </div>
               )}
-              {!!tokenData?.token?.weightInMeter && (
+              {typeof tokenData?.token?.weightInMeter !== "undefined" && (
                 <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-weight rounded-full flex justify-center items-center flex-col">
                     <RiScales2Line className="text-4xl" />
