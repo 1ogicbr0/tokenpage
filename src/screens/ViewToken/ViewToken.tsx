@@ -493,48 +493,58 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                   The Packagers
                 </p>
               </p>
-              <p className="text-xl text-gray-500 font-medium flex-row flex">
-                Price:
-                <p className="text-gray-900 ml-4 font-semibold">{`${tokenData?.token?.value} ${tokenData?.token?.currency}`}</p>
-              </p>
+              {!!tokenData?.token?.value && !!tokenData?.token?.currency && (
+                <p className="text-xl text-gray-500 font-medium flex-row flex">
+                  Price:
+                  <p className="text-gray-900 ml-4 font-semibold">{`${tokenData?.token?.value} ${tokenData?.token?.currency}`}</p>
+                </p>
+              )}
             </div>
             <div className="flex flex-row justify-between flex-wrap pb-8">
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
-                <div className="w-36 h-36 bg-box-length rounded-full flex justify-center items-center flex-col">
-                  <CgRuler className="text-4xl -rotate-45" />
-                  <p className="text-gray-500 mt-2">Length</p>
+              {!!tokenData?.token?.lengthInMeter && (
+                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                  <div className="w-36 h-36 bg-box-length rounded-full flex justify-center items-center flex-col">
+                    <CgRuler className="text-4xl -rotate-45" />
+                    <p className="text-gray-500 mt-2">Length</p>
+                  </div>
+                  <div className="px-4 items-center flex flex-auto">
+                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.lengthInMeter} m`}</p>
+                  </div>
                 </div>
-                <div className="px-4 items-center flex flex-auto">
-                  <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.lengthInMeter} m`}</p>
+              )}
+              {!!tokenData?.token?.depthInMeter && (
+                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                  <div className="w-36 h-36 bg-box-depth rounded-full flex justify-center items-center flex-col">
+                    <AiOutlineColumnHeight className="text-4xl" />
+                    <p className="text-gray-500 mt-2">Depth</p>
+                  </div>
+                  <div className="px-4 items-center flex flex-auto">
+                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.depthInMeter} m`}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
-                <div className="w-36 h-36 bg-box-depth rounded-full flex justify-center items-center flex-col">
-                  <AiOutlineColumnHeight className="text-4xl" />
-                  <p className="text-gray-500 mt-2">Depth</p>
+              )}
+              {!!tokenData?.token?.widthInMeter && (
+                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                  <div className="w-36 h-36 bg-box-width rounded-full flex justify-center items-center flex-col">
+                    <AiOutlineColumnWidth className="text-4xl" />
+                    <p className="text-gray-500 mt-2">Width</p>
+                  </div>
+                  <div className="px-4 items-center flex flex-auto">
+                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.widthInMeter} m`}</p>
+                  </div>
                 </div>
-                <div className="px-4 items-center flex flex-auto">
-                  <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.depthInMeter} m`}</p>
+              )}
+              {!!tokenData?.token?.weightInMeter && (
+                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                  <div className="w-36 h-36 bg-box-weight rounded-full flex justify-center items-center flex-col">
+                    <RiScales2Line className="text-4xl" />
+                    <p className="text-gray-500 mt-2">Weight</p>
+                  </div>
+                  <div className="px-4 items-center flex flex-auto">
+                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.weightInMeter} kg`}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
-                <div className="w-36 h-36 bg-box-width rounded-full flex justify-center items-center flex-col">
-                  <AiOutlineColumnWidth className="text-4xl" />
-                  <p className="text-gray-500 mt-2">Width</p>
-                </div>
-                <div className="px-4 items-center flex flex-auto">
-                  <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.widthInMeter} m`}</p>
-                </div>
-              </div>
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
-                <div className="w-36 h-36 bg-box-weight rounded-full flex justify-center items-center flex-col">
-                  <RiScales2Line className="text-4xl" />
-                  <p className="text-gray-500 mt-2">Weight</p>
-                </div>
-                <div className="px-4 items-center flex flex-auto">
-                  <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.weightInMeter} kg`}</p>
-                </div>
-              </div>
+              )}
             </div>
           </div>
           <div className="px-4">
