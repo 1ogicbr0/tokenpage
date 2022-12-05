@@ -28,7 +28,8 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build && yarn publicPathCorrection",
+		"build": "react-scripts build",
+		"buildMeveo": "react-scripts build && yarn publicPathCorrection",
 		"publicPathCorrection": "python publicPathCorrection.py",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
