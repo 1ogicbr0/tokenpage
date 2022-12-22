@@ -324,45 +324,45 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
               </ContentLoader>
             </div>
             <div className="flex flex-row justify-between flex-wrap pb-8">
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+              <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                 <div className="w-36 h-36 bg-box-length rounded-full flex justify-center items-center flex-col">
                   <CgRuler className="text-4xl -rotate-45" />
                   <p className="text-gray-500 mt-2">Length</p>
                 </div>
-                <div className="px-4 items-center flex flex-auto">
+                <div className="px-4 items-center flex flex-1">
                   <ContentLoader viewBox="0 0 128 40" className="w-32">
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
               </div>
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+              <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                 <div className="w-36 h-36 bg-box-depth rounded-full flex justify-center items-center flex-col">
                   <AiOutlineColumnHeight className="text-4xl" />
                   <p className="text-gray-500 mt-2">Depth</p>
                 </div>
-                <div className="px-4 items-center flex flex-auto">
+                <div className="px-4 items-center flex flex-1">
                   <ContentLoader viewBox="0 0 128 40" className="w-32">
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
               </div>
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+              <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                 <div className="w-36 h-36 bg-box-width rounded-full flex justify-center items-center flex-col">
                   <AiOutlineColumnWidth className="text-4xl" />
                   <p className="text-gray-500 mt-2">Width</p>
                 </div>
-                <div className="px-4 items-center flex flex-auto">
+                <div className="px-4 items-center flex flex-1">
                   <ContentLoader viewBox="0 0 128 40" className="w-32">
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
               </div>
-              <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+              <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                 <div className="w-36 h-36 bg-box-weight rounded-full flex justify-center items-center flex-col">
                   <RiScales2Line className="text-4xl" />
                   <p className="text-gray-500 mt-2">Weight</p>
                 </div>
-                <div className="px-4 items-center flex flex-auto">
+                <div className="px-4 items-center flex flex-1">
                   <ContentLoader viewBox="0 0 128 40" className="w-32">
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
@@ -503,46 +503,46 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
             </div>
             <div className="flex flex-row justify-between flex-wrap pb-8">
               {typeof tokenData?.token?.lengthInMeter !== "undefined" && (
-                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-length rounded-full flex justify-center items-center flex-col">
                     <CgRuler className="text-4xl -rotate-45" />
                     <p className="text-gray-500 mt-2">Length</p>
                   </div>
-                  <div className="px-4 items-center flex flex-auto">
-                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.lengthInMeter} m`}</p>
+                  <div className="px-4 items-center flex flex-1">
+                    <p className="text-4xl font-bold text-gray-500 break-all">{`${tokenData?.token?.lengthInMeter} m`}</p>
                   </div>
                 </div>
               )}
               {typeof tokenData?.token?.depthInMeter !== "undefined" && (
-                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-depth rounded-full flex justify-center items-center flex-col">
                     <AiOutlineColumnHeight className="text-4xl" />
                     <p className="text-gray-500 mt-2">Depth</p>
                   </div>
-                  <div className="px-4 items-center flex flex-auto">
-                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.depthInMeter} m`}</p>
+                  <div className="px-4 items-center flex flex-1">
+                    <p className="text-4xl font-bold text-gray-500 break-all">{`${tokenData?.token?.depthInMeter} m`}</p>
                   </div>
                 </div>
               )}
               {typeof tokenData?.token?.widthInMeter !== "undefined" && (
-                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-width rounded-full flex justify-center items-center flex-col">
                     <AiOutlineColumnWidth className="text-4xl" />
                     <p className="text-gray-500 mt-2">Width</p>
                   </div>
-                  <div className="px-4 items-center flex flex-auto">
-                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.widthInMeter} m`}</p>
+                  <div className="px-4 items-center flex flex-1">
+                    <p className="text-4xl font-bold text-gray-500 break-all">{`${tokenData?.token?.widthInMeter} m`}</p>
                   </div>
                 </div>
               )}
               {typeof tokenData?.token?.weightInKilo !== "undefined" && (
-                <div className="mt-8 border-2 md:w-5/12 w-full rounded-full flex-row flex overflow-hidden">
+                <div className="mt-8 border-2 md:w-p-48 w-full rounded-full flex-row flex overflow-hidden">
                   <div className="w-36 h-36 bg-box-weight rounded-full flex justify-center items-center flex-col">
                     <RiScales2Line className="text-4xl" />
                     <p className="text-gray-500 mt-2">Weight</p>
                   </div>
-                  <div className="px-4 items-center flex flex-auto">
-                    <p className="text-4xl font-bold text-gray-500">{`${tokenData?.token?.weightInKilo} kg`}</p>
+                  <div className="px-4 items-center flex flex-1">
+                    <p className="text-4xl font-bold text-gray-500 break-all">{`${tokenData?.token?.weightInKilo} kg`}</p>
                   </div>
                 </div>
               )}
