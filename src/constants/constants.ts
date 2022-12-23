@@ -45,4 +45,19 @@ const viewTokenTypes = Object.freeze({
 	SHARED_TOKEN: "SHARED_TOKEN",
 })
 
-export { documentTypes, documentPathTypes, tokenStatuses, viewTokenTypes };
+const imageMimeTypes = Object.freeze(['image/png', 'image/jpeg', 'image/gif']);
+
+const pdfMimeType = 'application/pdf';
+
+const docMimeType = 'application/msword';
+
+const textMimeType = 'text/plain';
+
+const documentFileTypes = Object.freeze({
+	IMAGE: 'IMAGE',
+	PDF: 'PDF',
+	DOC: 'DOC',
+	FILE_3D_OBJ: '3D_OBJ'
+});
+
+export { documentTypes, documentPathTypes, tokenStatuses, viewTokenTypes, imageMimeTypes, pdfMimeType, docMimeType, textMimeType, documentFileTypes };
