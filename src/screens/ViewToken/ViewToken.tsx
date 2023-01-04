@@ -560,7 +560,11 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                     <p className="text-gray-500 mt-2">Length</p>
                   </div>
                   <div className="px-4 items-center flex flex-1">
-                    <p className="text-xl font-bold text-gray-500 break-all">{`${tokenData?.token?.lengthInMeter} m`}</p>
+                    <p className="text-xl font-bold text-gray-500 break-all">
+                      {!tokenData?.token?.lengthInMeter
+                        ? "Unknown"
+                        : `${tokenData?.token?.lengthInMeter} m`}
+                    </p>
                   </div>
                 </div>
               )}
@@ -571,7 +575,11 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                     <p className="text-gray-500 mt-2">Depth</p>
                   </div>
                   <div className="px-4 items-center flex flex-1">
-                    <p className="text-xl font-bold text-gray-500 break-all">{`${tokenData?.token?.depthInMeter} m`}</p>
+                    <p className="text-xl font-bold text-gray-500 break-all">
+                      {!tokenData?.token?.depthInMeter
+                        ? "Unknown"
+                        : `${tokenData?.token?.depthInMeter} m`}
+                    </p>
                   </div>
                 </div>
               )}
@@ -582,7 +590,11 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                     <p className="text-gray-500 mt-2">Width</p>
                   </div>
                   <div className="px-4 items-center flex flex-1">
-                    <p className="text-xl font-bold text-gray-500 break-all">{`${tokenData?.token?.widthInMeter} m`}</p>
+                    <p className="text-xl font-bold text-gray-500 break-all">
+                      {!tokenData?.token?.widthInMeter
+                        ? "Unknown"
+                        : `${tokenData?.token?.widthInMeter} m`}
+                    </p>
                   </div>
                 </div>
               )}
@@ -593,7 +605,11 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
                     <p className="text-gray-500 mt-2">Weight</p>
                   </div>
                   <div className="px-4 items-center flex flex-1">
-                    <p className="text-xl font-bold text-gray-500 break-all">{`${tokenData?.token?.weightInKilo} kg`}</p>
+                    <p className="text-xl font-bold text-gray-500 break-all">
+                      {!tokenData?.token?.weightInKilo
+                        ? "Unknown"
+                        : `${tokenData?.token?.weightInKilo} kg`}
+                    </p>
                   </div>
                 </div>
               )}
