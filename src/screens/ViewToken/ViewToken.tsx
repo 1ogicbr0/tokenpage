@@ -504,11 +504,11 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
     return (
       <div className="flex items-center justify-center">
         <div className="w-full max-w-4xl self-center">
-          <div className="w-full h-64 relative">
+          <div className="w-full h-64 md:h-80 relative bg-gray-300">
             <img
               alt="cover"
               src={coverImageDocument?.fileUrl}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
             <button
               className="w-12 h-12 absolute right-2 bottom-2 justify-center items-center flex rounded-full opacity-70 hover:text-blue-600"
