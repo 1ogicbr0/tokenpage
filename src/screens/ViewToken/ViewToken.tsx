@@ -68,16 +68,16 @@ type TokenDataType = {
   documents: DocumentType;
 };
 
-type viewTokenProps = {
+type ViewTokenProps = {
   viewTokenType: string;
 };
 
-type viewDocumentDataType = {
+type ViewDocumentDataType = {
   uri: string;
   mimeType: string;
 };
 
-function ViewToken({ viewTokenType }: viewTokenProps) {
+function ViewToken({ viewTokenType }: ViewTokenProps) {
   const [tokenData, setTokenData] = useState<TokenDataType>();
   const [coverImageDocument, setCoverImageDocument] = useState<DocumentType>();
   const [galleryList, setGalleryList] = useState<string[]>([]);
@@ -95,7 +95,7 @@ function ViewToken({ viewTokenType }: viewTokenProps) {
   );
   const [isViewDocument, setIsViewDocument] = useState(false);
   const [viewDocumentData, setViewDocumentData] =
-    useState<viewDocumentDataType>({
+    useState<ViewDocumentDataType>({
       uri: "",
       mimeType: "",
     });
