@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@cyntler/react-doc-viewer": "^1.10.3",
 		"@headlessui/react": "^1.7.4",
 		"@heroicons/react": "^2.0.13",
 		"@react-pdf-viewer/core": "^3.9.0",
