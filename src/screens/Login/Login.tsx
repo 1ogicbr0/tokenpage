@@ -1,28 +1,28 @@
-import {
-  TextField,
-  FormHelperText,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
-import { Formik, FormikHelpers } from "formik";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
+import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
-import { alpha, styled } from "@mui/material/styles";
-
+import { styled } from "@mui/material/styles";
+import * as Yup from "yup";
+import APIService from "../../services/APIService";
+import { addToken } from "../../store/slices/auth";
+import { useDispatch } from "react-redux";
+import colors from "../../common/colors";
+import { ClipLoader } from "react-spinners";
 const CustomTextField = styled(TextField)({
   "& label.Mui-focused": {
-    color: "#35a7d1",
+    color: colors.inputFocus,
   },
   "& label.Mui-error": {
-    color: "#E4416B",
+    color: colors.inputError,
   },
   "& .MuiOutlinedInput-root": {
     borderRadius: 12,
     "&.Mui-focused fieldset": {
-      borderColor: "#35a7d1",
+      borderColor: colors.inputFocus,
     },
     "&.Mui-error fieldset": {
-      borderColor: "#E4416B",
+      borderColor: colors.inputError,
     },
   },
 });
@@ -37,6 +37,8 @@ function Login() {
   ) => {
     event.preventDefault();
   };
+
+  const dispatch = useDispatch();
   return (
     <div className="flex items-center justify-center">
       <div className="w-full h-screen max-w-4xl self-center items-center flex flex-col py-10 bg-slate-200 bg-[url('/public/background-image-top.png')] bg-cover">
@@ -71,25 +73,34 @@ function Login() {
           </div>
           <Formik
             initialValues={{ username: "", password: "" }}
-            onSubmit={function (
-              values: { username: string; password: string },
-              formikHelpers: FormikHelpers<{
-                username: string;
-                password: string;
-              }>
-            ): void | Promise<any> {
-              throw new Error("Function not implemented.");
+            onSubmit={({ username, password }, { setSubmitting }) => {
+              APIService.loginKeyCloak(
+                username,
+                password,
+                (success: any, json: any) => {
+                  setSubmitting(false);
+                  if (success && json.access_token) {
+                    dispatch(
+                      addToken({
+                        accessToken: json.access_token,
+                        refreshToken: json.refresh_token,
+                        expiredAt:
+                          new Date().getTime() +
+                          (json.expires_in ?? 1000) * 1000,
+                      })
+                    );
+                  }
+                }
+              );
             }}
-            validate={(values) => {
-              const errors = { username: "", password: "" };
-              if (!values.username) {
-                errors.username = "Please enter username.";
-              }
-              if (!values.password) {
-                errors.password = "Please enter password.";
-              }
-              return errors;
-            }}
+            validationSchema={Yup.object().shape({
+              username: Yup.string()
+                .max(255)
+                .required("Please enter username."),
+              password: Yup.string()
+                .max(255)
+                .required("Please enter password."),
+            })}
           >
             {({
               values,
@@ -102,12 +113,6 @@ function Login() {
 
               /* and other goodies */
             }) => {
-              console.log({
-                values,
-                errors,
-                touched,
-              });
-
               return (
                 <form
                   onSubmit={handleSubmit}
@@ -162,9 +167,15 @@ function Login() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-black hover:bg-slate-700 flex flex-row rounded-full p-4 mt-2 justify-center w-full"
+                    className={`bg-black hover:bg-slate-800 flex flex-row rounded-full px-4 h-16 items-center mt-2 justify-center w-full ${
+                      isSubmitting && "bg-gray-700 hover:bg-gray-700"
+                    }`}
                   >
-                    <p className=" text-white text-lg font-semibold">Login</p>
+                    {isSubmitting ? (
+                      <ClipLoader color={colors.white} />
+                    ) : (
+                      <p className=" text-white text-lg font-semibold">Login</p>
+                    )}
                   </button>
                   <p className="self-center text-slate-400 mt-12">
                     Don't have an account?
