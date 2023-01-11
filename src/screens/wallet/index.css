@@ -1,0 +1,56 @@
+.test{
+  background-color: red;
+}
+.d-flex{
+  display: flex
+}
+
+.center-horizontal{
+  display: flex;
+  justify-content: center;
+}
+
+.center-vertical{
+  display: flex;
+  align-items: center;
+}
+
+.content{
+  padding:20px;
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0px 0px 4px 0px #999999;
+  height: 100%;
+}
+
+.title-right{
+ 
+}
+
+.title-right span{
+  margin-right: 10px;
+}
+
+.title-right .button{
+  border-radius: 3px;
+  box-shadow: 0px 0px 4px 1px #999999;
+  display:flex;
+  justify-content: center;
+}
+
+.content .slice{
+  border:1px solid rgb(223, 206, 206);
+  margin-top:10px;
+  margin-bottom: 30px;
+}
+
+.content .image{
+  border-radius: 20px;
+}
+
+.content .item{
+  padding:13px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px 3px #999999;
+}
