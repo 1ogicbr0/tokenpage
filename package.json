@@ -5,7 +5,6 @@
 	"dependencies": {
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
-		"@cyntler/react-doc-viewer": "^1.10.3",
 		"@headlessui/react": "^1.7.4",
 		"@heroicons/react": "^2.0.13",
 		"@mui/icons-material": "^5.11.0",
