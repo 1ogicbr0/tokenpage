@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Modal from "react-modal";
@@ -7,7 +8,6 @@ import { Worker, Viewer } from "@react-pdf-viewer/core";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 type ViewDocumentProps = {
   uri: string;
@@ -43,24 +43,6 @@ function ViewDocument({ uri, mimeType, visible, onClose }: ViewDocumentProps) {
           </button>
         </div>
       );
-    }
-    else {
-      return (
-        <div className=" bg-gray-300 flex flex-1 justify-center ">
-          <DocViewer
-            documents={[{
-              uri
-            }]}
-            pluginRenderers={DocViewerRenderers}
-          />
-          <button
-            className=" bg-gray-500 w-12 h-12 rounded-full justify-center items-center flex absolute top-12 right-12"
-            onClick={onClose}
-          >
-            <VscChromeClose className="text-3xl text-white" />
-          </button>
-        </div>
-      )
     }
   };
 
