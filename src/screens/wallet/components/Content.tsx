@@ -1,11 +1,16 @@
+import { TokenDataType } from "../../ViewToken/ViewToken";
 import "../index.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-const Content = () => {
+export type ContentProps = {
+  tokenList: TokenDataType[];
+};
+
+const Content = ({ tokenList }: ContentProps) => {
   return (
     <div className="content">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>My Digital TWins</div>
+        <div>My Digital Twins</div>
         <div className="d-flex title-right">
           <span>View More</span>
           <div className="button">
@@ -14,7 +19,7 @@ const Content = () => {
         </div>
       </div>
       <div className="slice" />
-      
+
       <div className="item">
         <div className="d-flex">
           <img

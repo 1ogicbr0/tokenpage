@@ -1,14 +1,17 @@
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import * as Yup from "yup";
 import APIService from "../../services/APIService";
-import { addToken } from "../../store/slices/auth";
-import { useDispatch } from "react-redux";
+import { addToken, removeToken } from "../../store/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import colors from "../../common/colors";
 import { ClipLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../store/store";
+
 const CustomTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: colors.inputFocus,
@@ -29,8 +32,41 @@ const CustomTextField = styled(TextField)({
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
+  const auth = useSelector((state: RootState) => state.auth);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  useEffect(() => {
+    if (auth.refreshToken) {
+      APIService.renewAccessToken(
+        (
+          success: any,
+          json: {
+            invalid_grant?: string;
+            expires_in?: number;
+            access_token?: string;
+            refresh_token?: string;
+          }
+        ) => {
+          if (success && json.access_token && json.refresh_token) {
+            const data = {
+              accessToken: json.access_token,
+              refreshToken: json.refresh_token,
+              expiredAt:
+                new Date().getTime() + (json.expires_in ?? 1800) * 1000,
+            };
+            dispatch(addToken(data));
+            navigate("/wallet", { replace: true });
+          } else if (
+            json.invalid_grant &&
+            json.invalid_grant === "invalid_grant"
+          ) {
+            dispatch(removeToken({}));
+          }
+        }
+      );
+    }
+  }, []);
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -89,6 +125,7 @@ function Login() {
                           (json.expires_in ?? 1000) * 1000,
                       })
                     );
+                    navigate("/wallet", { replace: true });
                   }
                 }
               );

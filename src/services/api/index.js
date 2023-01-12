@@ -1,6 +1,7 @@
 import * as base64 from "base-64";
 import { queryParamsURLEncodedString } from "../WebService";
 import { basicAuth } from "../APIService";
+import store from "../../store/store";
 
 const basicMethod = {
   jsonrpc: "2.0",
@@ -68,8 +69,8 @@ const Api = {
     } else if (parameters?.jwt) {
       headers.Authorization = `Bearer ${parameters.jwt}`;
       delete parameters.jwt;
-    } else if (false) {
-      headers.Authorization = `Bearer preferences.apiJwtToken`;
+    } else if (store.getState()?.auth.accessToken) {
+      headers.Authorization = `Bearer ${store.getState()?.auth.accessToken}`;
     }
     if (parameters.headers) {
       Object.assign(headers, parameters.headers);
@@ -113,8 +114,8 @@ const Api = {
     } else if (parameters?.jwt) {
       headers.Authorization = `Bearer ${parameters.jwt}`;
       delete parameters.jwt;
-    } else if (false) {
-      headers.Authorization = `Bearer preferences.apiJwtToken`;
+    } else if (store.getState()?.auth.accessToken) {
+      headers.Authorization = `Bearer ${store.getState()?.auth.accessToken}`;
     }
     if (parameters.headers) {
       Object.assign(headers, parameters.headers);
@@ -156,8 +157,8 @@ const Api = {
     } else if (parameters?.jwt) {
       headers.Authorization = `Bearer ${parameters.jwt}`;
       delete parameters.jwt;
-    } else if (false) {
-      headers.Authorization = `Bearer preferences.apiJwtToken`;
+    } else if (store.getState()?.auth.accessToken) {
+      headers.Authorization = `Bearer ${store.getState()?.auth.accessToken}`;
     } else {
       headers.Authorization = `Basic ${base64.encode(basicAuth)}`;
     }

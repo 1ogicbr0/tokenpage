@@ -31,7 +31,7 @@ import ContentLoader from "react-content-loader";
 import Modal from "react-modal";
 import ViewDocument from "../../components/ViewDocument";
 
-type DocumentType = {
+export type DocumentType = {
   uuid: string;
   path: string;
   name: string;
@@ -43,13 +43,13 @@ type DocumentType = {
   fileUrl?: string;
 };
 
-type DocumentGroupType = {
+export type DocumentGroupType = {
   name: string;
   path: string;
   list: DocumentType[];
 };
 
-type TokenType = {
+export type TokenType = {
   uuid: string;
   code: string;
   name?: string;
@@ -63,16 +63,16 @@ type TokenType = {
   creationDate?: number;
 };
 
-type TokenDataType = {
+export type TokenDataType = {
   token: TokenType;
   documents: DocumentType;
 };
 
-type ViewTokenProps = {
+export type ViewTokenProps = {
   viewTokenType: string;
 };
 
-type ViewDocumentDataType = {
+export type ViewDocumentDataType = {
   uri: string;
   mimeType: string;
 };
