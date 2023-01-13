@@ -43,6 +43,7 @@ const tokenStatuses = Object.freeze({
 const viewTokenTypes = Object.freeze({
 	PUBLIC_TOKEN: "PUBLIC_TOKEN",
 	SHARED_TOKEN: "SHARED_TOKEN",
+	OWNED_TOKEN: "OWNED_TOKEN",
 })
 
 const imageMimeTypes = Object.freeze(['image/png', 'image/jpeg', 'image/gif']);

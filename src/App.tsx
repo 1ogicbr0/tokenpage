@@ -42,6 +42,12 @@ function App() {
                   <ViewToken viewTokenType={viewTokenTypes.SHARED_TOKEN} />
                 }
               />
+              <Route
+                path="/digital-twin-detail/:tokenId"
+                element={
+                  <ViewToken viewTokenType={viewTokenTypes.OWNED_TOKEN} />
+                }
+              />
               <Route path="/wallet" element={<Wallet />} />
               <Route path="/login" element={<Login />} />
               <Route path="*" element={<Login />} />

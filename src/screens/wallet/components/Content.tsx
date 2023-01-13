@@ -2,12 +2,18 @@ import { TokenDataType } from "../../ViewToken/ViewToken";
 import "../index.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { documentPathTypes } from "../../../constants/constants";
+import { useNavigate } from "react-router-dom";
 
 export type ContentProps = {
   tokenList: TokenDataType[];
 };
 
 const Content = ({ tokenList }: ContentProps) => {
+  const navigate = useNavigate();
+  const onViewToken = (tokenId: string) => {
+    navigate(`/digital-twin-detail/${tokenId}`);
+  };
+
   return (
     <div className="flex flex-1 flex-col bg-white w-full pt-16 pb-8 px-8 rounded-t-large mt-4 items-center shadow-3xl">
       <div className="w-full border-b-2 border-b-gray-300 pb-4 flex flex-row">
@@ -26,9 +32,12 @@ const Content = ({ tokenList }: ContentProps) => {
             (document) => document.path === documentPathTypes.COVER_IMAGE
           );
           return (
-            <div
+            <button
               key={token.token.uuid}
               className="flex flex-row w-full my-4 shadow-xl-large rounded-3xl p-4 overflow-hidden cursor-pointer hover:bg-slate-200"
+              onClick={() => {
+                onViewToken(token.token.uuid);
+              }}
             >
               <div className="w-48 h-48 rounded-2xl overflow-hidden bg-gray-300">
                 <img
@@ -45,7 +54,7 @@ const Content = ({ tokenList }: ContentProps) => {
                   {token.token.description}
                 </div>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>

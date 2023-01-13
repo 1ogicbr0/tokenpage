@@ -42,7 +42,7 @@ function Login() {
         (
           success: any,
           json: {
-            invalid_grant?: string;
+            error?: string;
             expires_in?: number;
             access_token?: string;
             refresh_token?: string;
@@ -57,10 +57,7 @@ function Login() {
             };
             dispatch(addToken(data));
             navigate("/wallet", { replace: true });
-          } else if (
-            json.invalid_grant &&
-            json.invalid_grant === "invalid_grant"
-          ) {
+          } else if (json.error && json.error === "invalid_grant") {
             dispatch(removeToken({}));
           }
         }

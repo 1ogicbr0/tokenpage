@@ -30,6 +30,7 @@ import { Carousel } from "react-responsive-carousel";
 import ContentLoader from "react-content-loader";
 import Modal from "react-modal";
 import ViewDocument from "../../components/ViewDocument";
+import APIService from "../../services/APIService";
 
 export type DocumentType = {
   uuid: string;
@@ -224,6 +225,41 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
         .catch((err) => {
           setTokenStatus(tokenStatuses.EMPTY);
         });
+    } else if (viewTokenType === viewTokenTypes.OWNED_TOKEN) {
+      const { tokenId } = params;
+      APIService.getToken(tokenId, (success: any, json: any) => {
+        if (success && json.result) {
+          let updateDocument = documentTypes.map((type: any) => ({
+            name: type.name,
+            path: type.path,
+            list: [],
+          }));
+          json.result.documents.forEach((document: any) => {
+            updateDocument.map(
+              (d: any) => d.path === document.path && d.list.push(document)
+            );
+          });
+          document.title = json.result?.token?.name;
+          setTokenStatus(tokenStatuses.EXIST);
+          setGalleryList(
+            json.result.documents
+              .filter(
+                (document: DocumentType) =>
+                  document.path === documentPathTypes.GALLERY
+              )
+              .map((document: DocumentType) => document.fileUrl)
+          );
+          setDocumentGroups(updateDocument);
+          setTokenData(json.result);
+          setCoverImageDocument(
+            json.result.documents.find(
+              (document: any) => document.path === "coverImage"
+            )
+          );
+        } else {
+          setTokenStatus(tokenStatuses.EMPTY);
+        }
+      });
     }
   };
 
@@ -321,8 +357,13 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
         key={key}
       >
         <BiDotsVerticalRounded className="font-semibold text-xl mr-2" />
-        <ContentLoader viewBox={`0 0 ${width} 28`} className="h-7">
-          <rect x="0" y="0" rx="0" ry="0" width={`${width}`} height="28" />
+        <ContentLoader
+          backgroundColor={"#dddddd"}
+          foregroundColor={"#eeeeee"}
+          viewBox={`0 0 ${width} 28`}
+          className="h-7"
+        >
+          <rect x="0" y="0" rx="8" ry="8" width={`${width}`} height="28" />
         </ContentLoader>
       </div>
     );
@@ -336,8 +377,13 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
         className="rounded-xl border-2 border-gray-300 w-full mt-8 overflow-hidden"
       >
         <div className="flex flex-column rounded-xl p-4 w-full items-center hover:bg-slate-100">
-          <ContentLoader viewBox={`0 0 ${width} 32`} className="h-8">
-            <rect x="0" y="0" rx="0" ry="0" width={`${width}`} height="32" />
+          <ContentLoader
+            backgroundColor={"#dddddd"}
+            foregroundColor={"#eeeeee"}
+            viewBox={`0 0 ${width} 32`}
+            className="h-8"
+          >
+            <rect x="0" y="0" rx="8" ry="8" width={`${width}`} height="32" />
           </ContentLoader>
         </div>
         {new Array(numDocument)
@@ -352,19 +398,33 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
       <div className="flex items-center justify-center">
         <div className="w-full max-w-4xl self-center" ref={wrapperRef}>
           <div className="w-full h-64 relative">
-            <ContentLoader viewBox={`0 0 ${width} 256`}>
+            <ContentLoader
+              backgroundColor={"#dddddd"}
+              foregroundColor={"#eeeeee"}
+              viewBox={`0 0 ${width} 256`}
+            >
               <rect x="0" y="0" rx="0" ry="0" width={`${width}`} height="256" />
             </ContentLoader>
           </div>
           <div className="px-4">
             <div className="flex flex-row items-center py-8 border-b-2">
               <BiCreditCardFront className="text-3xl" />
-              <ContentLoader viewBox="0 0 128 40" className="w-32 ml-6">
+              <ContentLoader
+                backgroundColor={"#dddddd"}
+                foregroundColor={"#eeeeee"}
+                viewBox="0 0 128 40"
+                className="w-32 ml-6"
+              >
                 <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
               </ContentLoader>
             </div>
             <div className="py-8">
-              <ContentLoader viewBox="0 0 384 60" className="w-96">
+              <ContentLoader
+                backgroundColor={"#dddddd"}
+                foregroundColor={"#eeeeee"}
+                viewBox="0 0 384 60"
+                className="w-96"
+              >
                 <rect x="0" y="0" rx="8" ry="8" width="384" height="60" />
               </ContentLoader>
             </div>
@@ -375,10 +435,20 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
               <p className="ml-6 font-semibold text-3xl">Specifications</p>
             </div>
             <div className="py-8">
-              <ContentLoader viewBox="0 0 224 28" className="w-56 ml-4">
+              <ContentLoader
+                backgroundColor={"#dddddd"}
+                foregroundColor={"#eeeeee"}
+                viewBox="0 0 224 28"
+                className="w-56 ml-4"
+              >
                 <rect x="0" y="0" rx="8" ry="8" width="224" height="28 " />
               </ContentLoader>
-              <ContentLoader viewBox="0 0 192 28" className="w-48 ml-4 mt-4">
+              <ContentLoader
+                backgroundColor={"#dddddd"}
+                foregroundColor={"#eeeeee"}
+                viewBox="0 0 192 28"
+                className="w-48 ml-4 mt-4"
+              >
                 <rect x="0" y="0" rx="8" ry="8" width="192" height="28 " />
               </ContentLoader>
             </div>
@@ -389,7 +459,12 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
                   <p className="text-gray-500 mt-2">Length</p>
                 </div>
                 <div className="px-4 items-center flex flex-1">
-                  <ContentLoader viewBox="0 0 128 40" className="w-32">
+                  <ContentLoader
+                    backgroundColor={"#dddddd"}
+                    foregroundColor={"#eeeeee"}
+                    viewBox="0 0 128 40"
+                    className="w-32"
+                  >
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
@@ -400,7 +475,12 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
                   <p className="text-gray-500 mt-2">Depth</p>
                 </div>
                 <div className="px-4 items-center flex flex-1">
-                  <ContentLoader viewBox="0 0 128 40" className="w-32">
+                  <ContentLoader
+                    backgroundColor={"#dddddd"}
+                    foregroundColor={"#eeeeee"}
+                    viewBox="0 0 128 40"
+                    className="w-32"
+                  >
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
@@ -411,7 +491,12 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
                   <p className="text-gray-500 mt-2">Width</p>
                 </div>
                 <div className="px-4 items-center flex flex-1">
-                  <ContentLoader viewBox="0 0 128 40" className="w-32">
+                  <ContentLoader
+                    backgroundColor={"#dddddd"}
+                    foregroundColor={"#eeeeee"}
+                    viewBox="0 0 128 40"
+                    className="w-32"
+                  >
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
@@ -422,7 +507,12 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
                   <p className="text-gray-500 mt-2">Weight</p>
                 </div>
                 <div className="px-4 items-center flex flex-1">
-                  <ContentLoader viewBox="0 0 128 40" className="w-32">
+                  <ContentLoader
+                    backgroundColor={"#dddddd"}
+                    foregroundColor={"#eeeeee"}
+                    viewBox="0 0 128 40"
+                    className="w-32"
+                  >
                     <rect x="0" y="0" rx="8" ry="8" width="128" height="40" />
                   </ContentLoader>
                 </div>
@@ -477,6 +567,8 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
                     return (
                       <div className="px-4" key={index}>
                         <ContentLoader
+                          backgroundColor={"#dddddd"}
+                          foregroundColor={"#eeeeee"}
                           viewBox={`0 0 ${imgWidth} 256`}
                           className="h-64 w-full"
                         >
@@ -550,7 +642,7 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
             <div className="py-8">
               <div className="flex flex-row">
                 <p className="text-xl text-gray-500 font-medium ">
-                  Token origin:
+                  Digital Twins origin:
                 </p>
                 <p className="text-xl text-gray-500 ml-4 font-semibold">
                   The Packagers
@@ -745,9 +837,12 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
           },
         }}
       >
-        <div className="flex flex-row items-center text-gray-600">
-          <TbSearchOff className="text-3xl" />
-          <p className="text-3xl font-bold text-gray-600 ml-4">Unknown token</p>
+        <div className="flex flex-row items-center text-gray-600 max-w-xs md:max-w-xl">
+          <TbSearchOff className="text-6xl" />
+          <p className="text-3xl font-bold text-gray-600 ml-4 text-center">
+            Digital Twins does not exist or you do not have permission to view
+            this Digital Twins.
+          </p>
         </div>
       </Modal>
       <ViewDocument
