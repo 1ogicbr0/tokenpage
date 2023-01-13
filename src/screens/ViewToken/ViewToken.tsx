@@ -61,11 +61,23 @@ export type TokenType = {
   value?: number;
   currency?: string;
   creationDate?: number;
+  lastUpdate?: number;
+  creator?: string;
+  owner?: string;
+  status?: string;
+  tokenPrivacy?: string;
+  new?: boolean;
+  transferAcceptDelay?: number;
+  transferStartDate?: number;
+  transferExpiryDate?: number;
+  isExpired?: boolean;
 };
 
 export type TokenDataType = {
   token: TokenType;
-  documents: DocumentType;
+  client?: any;
+  documents: DocumentType[];
+  privacySettings?: any;
 };
 
 export type ViewTokenProps = {

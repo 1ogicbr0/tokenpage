@@ -100,7 +100,7 @@ function Login() {
           </button>
         </div>
         <p className="mt-8 font-normal text-sm">or login with username</p>
-        <div className="bg-white w-full p-16 rounded-t-large mt-4 items-center  flex flex-col shadow-2xl">
+        <div className="bg-white w-full p-16 rounded-t-large mt-4 items-center flex flex-col shadow-2xl">
           <div className="flex flex-row items-center pr-4 rounded-full w-fit bg-box-account mb-8">
             <div className="w-10 h-10 flex items-center justify-center bg-box-user rounded-full">
               <img src="tick-user.png" className="w-5 h-5" alt="tickUserIcon" />

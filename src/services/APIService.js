@@ -13,6 +13,8 @@ export default class APIService {
   static routeMeveoAPI = () => `${process.env.REACT_APP_SERVER_ADDRESS}/meveo`;
   static apiGetToken = (tokenId) =>
     `${APIService.routeMeveoAPI()}/rest/unikbase-token/${tokenId}`;
+  static apiGetWalletInfoByKeyCloak = () =>
+    `${APIService.routeMeveoAPI()}/rest/user-wallet-info`;
 
   static loginKeyCloak(username, password, callback) {
     const data = {
@@ -49,5 +51,9 @@ export default class APIService {
 
   static getToken(tokenId, callback) {
     WebService.sendGetDirect(this.apiGetToken(tokenId), {}, callback);
+  }
+
+  static getWalletInfoByKeyCloak(callback) {
+    WebService.sendGetDirect(this.apiGetWalletInfoByKeyCloak(), {}, callback);
   }
 }

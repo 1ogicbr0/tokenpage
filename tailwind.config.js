@@ -24,6 +24,10 @@ module.exports = {
       borderRadius: {
         large: "5rem",
       },
+      boxShadow: {
+        "3xl": "0px 0px 4px 1px #999999",
+        "xl-large": "4px 4px 10px 10px rgba(0, 0, 0, 0.2)",
+      },
     },
   },
   plugins: [],
