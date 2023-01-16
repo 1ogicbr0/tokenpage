@@ -1,17 +1,17 @@
 import React from "react";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { viewTokenTypes } from "./constants/constants";
-import ViewToken from "./screens/ViewToken/ViewToken";
-import Login from "./screens/Login/Login";
-import Wallet from "./screens/Wallet";
+import {
+  useRoutes,
+} from "react-router-dom";
 import { Provider } from "react-redux";
 import store, { persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import routes from "./routes";
 
 function App() {
+  const routing = useRoutes(routes);
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -28,31 +28,7 @@ function App() {
             pauseOnHover
             theme="light"
           />
-          <Router>
-            <Routes>
-              <Route
-                path="/token/:tokenId"
-                element={
-                  <ViewToken viewTokenType={viewTokenTypes.PUBLIC_TOKEN} />
-                }
-              />
-              <Route
-                path="/shared/:shareHash"
-                element={
-                  <ViewToken viewTokenType={viewTokenTypes.SHARED_TOKEN} />
-                }
-              />
-              <Route
-                path="/digital-twin-detail/:tokenId"
-                element={
-                  <ViewToken viewTokenType={viewTokenTypes.OWNED_TOKEN} />
-                }
-              />
-              <Route path="/wallet" element={<Wallet />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="*" element={<Login />} />
-            </Routes>
-          </Router>
+          {routing}
         </div>
       </PersistGate>
     </Provider>

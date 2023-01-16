@@ -6,40 +6,15 @@ import { RootState } from "../../store/store";
 import { useEffect, useState } from "react";
 import { TokenDataType } from "../ViewToken/ViewToken";
 import APIService from "../../services/APIService";
-import { useNavigate } from "react-router-dom";
-import { addToken, removeToken } from "../../store/slices/authSlice";
 import { addProfile } from "../../store/slices/profileSlice";
 
 const Wallet = () => {
-  const { accessToken, refreshToken } = useSelector(
-    (state: RootState) => state.auth
-  );
+  const { accessToken } = useSelector((state: RootState) => state.auth);
   const [tokenList, setTokenList] = useState<TokenDataType[]>([]);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (accessToken && refreshToken) {
-      APIService.renewAccessToken((success: any, json: any) => {
-        if (success && json.access_token) {
-          dispatch(
-            addToken({
-              accessToken: json.access_token,
-              refreshToken: json.refresh_token,
-              expiredAt:
-                new Date().getTime() + (json.expires_in ?? 1000) * 1000,
-            })
-          );
-          getTokenList();
-        } else {
-          dispatch(removeToken({}));
-          navigate("/login", { replace: true });
-        }
-      });
-    } else {
-      dispatch(removeToken({}));
-      navigate("/login", { replace: true });
-    }
+    getTokenList();
   }, []);
 
   useEffect(() => {
@@ -72,10 +47,7 @@ const Wallet = () => {
   };
 
   const getTokenList = () => {
-    console.log("getTokenList");
-
     APIService.getTokenList((success: any, json: any) => {
-      console.log(JSON.stringify(json));
       setTokenList(json.result);
     });
   };
