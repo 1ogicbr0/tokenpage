@@ -24,6 +24,8 @@ import {
   documentPathTypes,
   tokenStatuses,
   viewTokenTypes,
+  imageMimeTypes,
+  pdfMimeType,
 } from "../../constants/constants";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -290,11 +292,16 @@ function ViewToken({ viewTokenType }: ViewTokenProps) {
   };
 
   const onViewDocument = (document: DocumentType) => {
-    setViewDocumentData({
-      uri: document.fileUrl || "",
-      mimeType: document.mimeType,
-    });
-    setIsViewDocument(true);
+    if (
+      imageMimeTypes.includes(document.mimeType) ||
+      document.mimeType === pdfMimeType
+    ) {
+      setViewDocumentData({
+        uri: document.fileUrl || "",
+        mimeType: document.mimeType,
+      });
+      setIsViewDocument(true);
+    }
   };
 
   const renderDocument = (document: DocumentType) => {

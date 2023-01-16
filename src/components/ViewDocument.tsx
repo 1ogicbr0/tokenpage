@@ -47,7 +47,7 @@ function ViewDocument({ uri, mimeType, visible, onClose }: ViewDocumentProps) {
   };
 
   return (
-    <Modal isOpen={visible} className="flex bg-green-600 h-full">
+    <Modal isOpen={visible} className="flex h-full">
       {renderViewer()}
     </Modal>
   );
