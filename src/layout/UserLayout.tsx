@@ -18,7 +18,7 @@ const UserLayout = () => {
 
   const onLogout = () => {
     dispatch(removeToken({}));
-    navigate("/login", { replace: true });
+    navigate("/token-login", { replace: true });
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const UserLayout = () => {
       renewToken();
     } else {
       dispatch(removeToken({}));
-      navigate("/login", { replace: true });
+      navigate("/token-login", { replace: true });
     }
   }, []);
 
@@ -53,7 +53,7 @@ const UserLayout = () => {
         );
       } else {
         dispatch(removeToken({}));
-        navigate("/login", { replace: true });
+        navigate("/token-login", { replace: true });
       }
     });
   };

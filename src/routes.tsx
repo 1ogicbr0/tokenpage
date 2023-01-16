@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { viewTokenTypes } from "./constants/constants";
 import UserLayout from "./layout/UserLayout";
 import Login from "./screens/Login/Login";
@@ -14,7 +15,7 @@ const routes: any = [
     element: <ViewToken viewTokenType={viewTokenTypes.SHARED_TOKEN} />,
   },
   {
-    path: "/login",
+    path: "/token-login",
     element: <Login />,
   },
   {
@@ -30,7 +31,7 @@ const routes: any = [
   },
   {
     path: "*",
-    element: <Login />,
+    element: <Navigate to="/token-login" replace />,
   },
 ];
 
