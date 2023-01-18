@@ -11,6 +11,7 @@ import colors from "../../common/colors";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store/store";
+import { toast } from "react-toastify";
 
 const CustomTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -75,7 +76,7 @@ function Login() {
   return (
     <div className="flex items-center justify-center">
       <div className="w-full h-screen max-w-4xl self-center items-center flex flex-col py-10 bg-slate-200 bg-[url('/public/background-image-top.png')] bg-cover">
-        <img src="logo.png" className=" w-48 h-48" alt="logo" />
+        <img src="/logo_title.png" className=" w-auto h-40" alt="logo" />
         <p className="mt-8 font-semibold text-xl">Welcome to UnikBase</p>
         <p className="mt-2 font-normal text-xs">
           Copyright 2022 | UnikBase.com
@@ -83,24 +84,36 @@ function Login() {
         <p className="mt-8 font-normal text-sm">Login with</p>
         <div className="flex flex-row mt-4">
           <button className="w-16 h-16 bg-black rounded-full justify-center items-center flex mx-2">
-            <img src="google-icon.png" className="w-10 h-10" alt="googleIcon" />
+            <img
+              src="/google-icon.png"
+              className="w-10 h-10"
+              alt="googleIcon"
+            />
           </button>
           <button className="w-16 h-16 bg-black rounded-full justify-center items-center flex mx-2">
             <img
-              src="facebook-icon.png"
+              src="/facebook-icon.png"
               className="w-10 h-10"
               alt="facebookIcon"
             />
           </button>
           <button className="w-16 h-16 bg-black rounded-full justify-center items-center flex mx-2">
-            <img src="apple-icon.png" className="w-10 h-10" alt="appleIcon" />
+            <img
+              src="/apple-icon.png"
+              className="w-10 h-10"
+              alt="appleIcon"
+            />
           </button>
         </div>
         <p className="mt-8 font-normal text-sm">or login with username</p>
         <div className="bg-white w-full p-16 rounded-t-large mt-4 items-center flex flex-col shadow-2xl">
           <div className="flex flex-row items-center pr-4 rounded-full w-fit bg-box-account mb-8">
             <div className="w-10 h-10 flex items-center justify-center bg-box-user rounded-full">
-              <img src="tick-user.png" className="w-5 h-5" alt="tickUserIcon" />
+              <img
+                src="/tick-user.png"
+                className="w-5 h-5"
+                alt="tickUserIcon"
+              />
             </div>
             <p className="ml-4">Account Login</p>
           </div>
