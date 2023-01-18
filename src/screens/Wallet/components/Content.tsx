@@ -18,12 +18,6 @@ const Content = ({ tokenList }: ContentProps) => {
     <div className="flex flex-1 flex-col bg-white w-full pt-16 pb-8 px-8 rounded-t-large mt-4 items-center shadow-3xl">
       <div className="w-full border-b-2 border-b-gray-300 pb-4 flex flex-row">
         <div className=" font-bold text-2xl flex flex-1">My Digital Twins</div>
-        <div className="d-flex text-gray-400 cursor-pointer flex flex-row items-center">
-          <div className="mr-4">View More</div>
-          <div className=" shadow-3xl bg-white rounded-lg w-7 h-7 items-center justify-center flex">
-            <NavigateNextIcon className="text-black" />
-          </div>
-        </div>
       </div>
 
       <div className="flex flex-1 flex-col w-full">
