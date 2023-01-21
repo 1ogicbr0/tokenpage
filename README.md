@@ -1,3 +1,7 @@
+# Deployment
+
+this webapp is deployed on dev server at the address [https://dev1.unikbase.dev/token-login](https://dev1.unikbase.dev/token-login)
+
 # Build
 
 First, install node packages:
