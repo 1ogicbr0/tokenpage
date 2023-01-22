@@ -35,45 +35,45 @@ import ViewDocument from "../../components/ViewDocument";
 import APIService from "../../services/APIService";
 
 export type DocumentType = {
-  uuid: string;
-  path: string;
-  name: string;
-  filename: string;
-  mimeType: string;
-  lastUpdate: number;
-  size: number;
   creationDate?: number;
+  filename: string;
   fileUrl?: string;
+  lastUpdate: number;
+  mimeType: string;
+  name: string;
+  path: string;
+  size: number;
+  uuid: string;
 };
 
 export type DocumentGroupType = {
+  list: DocumentType[];
   name: string;
   path: string;
-  list: DocumentType[];
 };
 
 export type TokenType = {
-  uuid: string;
   code: string;
-  name?: string;
-  description?: string;
-  lengthInMeter?: number;
-  widthInMeter?: number;
-  depthInMeter?: number;
-  weightInKilo?: number;
-  value?: number;
-  currency?: string;
   creationDate?: number;
-  lastUpdate?: number;
   creator?: string;
+  currency?: string;
+  depthInMeter?: number;
+  description?: string;
+  isExpired?: boolean;
+  lastUpdate?: number;
+  lengthInMeter?: number;
+  name?: string;
+  new?: boolean;
   owner?: string;
   status?: string;
   tokenPrivacy?: string;
-  new?: boolean;
   transferAcceptDelay?: number;
-  transferStartDate?: number;
   transferExpiryDate?: number;
-  isExpired?: boolean;
+  transferStartDate?: number;
+  uuid: string;
+  value?: number;
+  weightInKilo?: number;
+  widthInMeter?: number;
 };
 
 export type TokenDataType = {

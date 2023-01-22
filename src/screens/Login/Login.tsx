@@ -138,7 +138,7 @@ function Login() {
                     navigate("/wallet", { replace: true });
                   } else {
                     toast.error(
-                      "Incorrent username of password. Please try again!"
+                      "Incorrect username of password. Please try again!"
                     );
                   }
                 }
