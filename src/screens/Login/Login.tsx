@@ -82,13 +82,15 @@ function Login() {
     <div className='flex items-center justify-center'>
       <div className='w-full h-screen max-w-4xl self-center items-center flex flex-col py-10 bg-darkBlue'>
         <img src={logo} className=' w-auto h-40' alt='logo' />
-        <p className='mt-8 font-semibold text-xl text-white'>
+        <p className='mt-8 font-semibold text-xl text-white font-rubik'>
           Welcome to UnikBase
         </p>
-        <p className='mt-2 font-normal text-xs text-white'>
+        <p className='mt-2 font-normal text-xs text-white font-rubik'>
           Copyright {currentYear} | UnikBase.com
         </p>
-        <p className='mt-8 font-normal text-sm text-white'>Login with</p>
+        <p className='mt-8 font-normal text-sm text-white font-rubik'>
+          Login with
+        </p>
         <div className='flex flex-row mt-4'>
           <button className='justify-center items-center flex mx-2'>
             <img
@@ -112,7 +114,7 @@ function Login() {
             />
           </button>
         </div>
-        <p className='mt-8 font-normal text-sm text-white'>
+        <p className='mt-8 font-normal text-sm text-white font-rubik'>
           or login with username
         </p>
         <div className='bg-white w-full p-16 rounded-t-large mt-4 items-center flex flex-col shadow-2xl'>
@@ -124,7 +126,7 @@ function Login() {
                 alt='tickUserIcon'
               />
             </div>
-            <p className='ml-4'>Account Login</p>
+            <p className='ml-4 font-rubik'>Account Login</p>
           </div>
           <Formik
             initialValues={{ username: '', password: '' }}
@@ -184,7 +186,7 @@ function Login() {
                     value={values.username}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className='w-full'
+                    className='w-full font-rubik'
                     error={!!errors.username && !!touched.username}
                     focused
                     color={'warning'}
@@ -199,7 +201,7 @@ function Login() {
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className='w-full mt-6'
+                    className='w-full mt-6 font-rubik'
                     error={!!errors.password && !!touched.password}
                     focused
                     InputProps={{
@@ -220,7 +222,7 @@ function Login() {
                   <p className='mt-2 text-error text-sm'>
                     {errors.password && touched.password && errors.password}
                   </p>
-                  <p className='mt-8 font-bold cursor-pointer hover:bg-slate-300 px-2 py-1 self-center'>
+                  <p className='font-rubik mt-8 font-semibold cursor-pointer hover:bg-slate-300 px-2 py-1 self-center'>
                     {' '}
                     Forgot password?
                   </p>
@@ -234,13 +236,15 @@ function Login() {
                     {isSubmitting ? (
                       <ClipLoader color={colors.white} />
                     ) : (
-                      <p className=' text-white text-lg font-semibold'>Login</p>
+                      <p className='text-white text-lg font-semibold font-rubik'>
+                        Login
+                      </p>
                     )}
                   </button>
-                  <p className='self-center text-slate-400 mt-12'>
+                  <p className='font-rubik self-center text-slate-400 mt-12'>
                     Don't have an account?
                   </p>
-                  <p className='self-center text-lg mt-2 text-blue-500 font-bold cursor-pointer px-4 py-2 hover:bg-blue-200 rounded-2xl'>
+                  <p className='font-rubik self-center text-lg mt-2 text-blue-500 font-semibold cursor-pointer px-4 py-2 hover:bg-blue-200 rounded-2xl'>
                     Sign up!
                   </p>
                 </form>
