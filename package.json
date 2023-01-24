@@ -3,6 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"homepage": "https://unikbase.github.io",
+	"repository": {
+		"url": "git+https://github.com/unikbase/tokenpage.git"
+	},
 	"dependencies": {
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
