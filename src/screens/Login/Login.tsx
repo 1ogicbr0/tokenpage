@@ -126,7 +126,7 @@ function Login() {
                 alt='tickUserIcon'
               />
             </div>
-            <p className='ml-4 font-rubik'>Account Login</p>
+            <p className='ml-4 font-rubik text-slate-500'>Account Login</p>
           </div>
           <Formik
             initialValues={{ username: '', password: '' }}
@@ -229,7 +229,7 @@ function Login() {
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    className={`bg-black hover:bg-slate-800 flex flex-row rounded-full px-4 h-16 items-center mt-2 justify-center w-full ${
+                    className={`bg-darkBlue hover:bg-slate-700 flex flex-row rounded-full px-4 h-16 items-center mt-2 justify-center w-full ${
                       isSubmitting && 'bg-gray-700 hover:bg-gray-700'
                     }`}
                   >
