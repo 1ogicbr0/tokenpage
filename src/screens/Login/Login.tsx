@@ -17,6 +17,7 @@ import logo from '../../assets/unikbase-logo-crop-white.png';
 import googleIcon from '../../assets/google-circle.png';
 import facebookIcon from '../../assets/facebook-circle.png';
 import appleIcon from '../../assets/apple-circle.png';
+import tickUserIcon from '../../assets/tick-user.png';
 
 const CustomTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -110,11 +111,7 @@ function Login() {
         <div className='bg-white w-full p-16 rounded-t-large mt-4 items-center flex flex-col shadow-2xl'>
           <div className='flex flex-row items-center pr-4 rounded-full w-fit bg-box-account mb-8'>
             <div className='w-10 h-10 flex items-center justify-center bg-box-user rounded-full'>
-              <img
-                src='/tick-user.png'
-                className='w-5 h-5'
-                alt='tickUserIcon'
-              />
+              <img src={tickUserIcon} className='w-5' alt='tickUserIcon' />
             </div>
             <p className='ml-4 font-rubik text-slate-500'>Account Login</p>
           </div>
