@@ -1,37 +1,37 @@
-import { Navigate } from "react-router-dom";
-import { viewTokenTypes } from "./constants/constants";
-import UserLayout from "./layout/UserLayout";
-import Login from "./screens/Login/Login";
-import ViewToken from "./screens/ViewToken/ViewToken";
-import Wallet from "./screens/Wallet";
+import { Navigate } from 'react-router-dom';
+import { viewTokenTypes } from './constants/constants';
+import UserLayout from './layout/UserLayout';
+import Login from './screens/Login/Login';
+import ViewToken from './screens/ViewToken/ViewToken';
+import Wallet from './screens/Wallet';
 
 const routes: any = [
   {
-    path: "/token/:tokenId",
+    path: '/token/:tokenId',
     element: <ViewToken viewTokenType={viewTokenTypes.PUBLIC_TOKEN} />,
   },
   {
-    path: "/shared/:shareHash",
+    path: '/shared/:shareHash',
     element: <ViewToken viewTokenType={viewTokenTypes.SHARED_TOKEN} />,
   },
   {
-    path: "/token-login",
+    path: '/token-login',
     element: <Login />,
   },
   {
-    path: "/",
+    path: '/',
     element: <UserLayout />,
     children: [
-      { path: "/wallet", element: <Wallet /> },
+      { path: '/wallet', element: <Wallet /> },
       {
-        path: "/digital-twin-detail/:tokenId",
+        path: '/digital-twin-detail/:tokenId',
         element: <ViewToken viewTokenType={viewTokenTypes.OWNED_TOKEN} />,
       },
     ],
   },
   {
-    path: "*",
-    element: <Navigate to="/token-login" replace />,
+    path: '*',
+    element: <Navigate to='/token-login' replace />,
   },
 ];
 
