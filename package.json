@@ -2,7 +2,7 @@
 	"name": "unikbase-web",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://unikbase.github.io/tokenpage",
+	"homepage": "https://unikbase.github.io",
 	"dependencies": {
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
