@@ -13,8 +13,10 @@ import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { toast } from 'react-toastify';
 
-// import logo from './../../assets/unikbase-logo.svg';
 import logo from '../../assets/unikbase-logo-crop-white.png';
+import googleIcon from '../../assets/google-circle.png';
+import facebookIcon from '../../assets/facebook-circle.png';
+import appleIcon from '../../assets/apple-circle.png';
 
 const CustomTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -93,25 +95,13 @@ function Login() {
         </p>
         <div className='flex flex-row mt-4'>
           <button className='justify-center items-center flex mx-2'>
-            <img
-              src='/assets/google-circle.png'
-              className='w-16 h-16'
-              alt='googleIcon'
-            />
+            <img src={googleIcon} className='w-16 h-16' alt='googleIcon' />
           </button>
           <button className='justify-center items-center flex mx-2'>
-            <img
-              src='/assets/facebook-circle.png'
-              className='w-16 h-16'
-              alt='facebookIcon'
-            />
+            <img src={facebookIcon} className='w-16 h-16' alt='facebookIcon' />
           </button>
           <button className='justify-center items-center flex mx-2'>
-            <img
-              src='/assets/apple-circle.png'
-              className='w-16 h-16'
-              alt='appleIcon'
-            />
+            <img src={appleIcon} className='w-16 h-16' alt='appleIcon' />
           </button>
         </div>
         <p className='mt-8 font-normal text-sm text-white font-rubik'>
