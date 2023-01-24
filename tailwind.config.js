@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "darkBlue": "#041c25",
         "box-length": "#E5F0EC",
         "box-depth": "#EDE5F0",
         "box-width": "#F0EBE5",
