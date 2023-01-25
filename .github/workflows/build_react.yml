@@ -30,5 +30,7 @@ jobs:
           npm i
           fi
     - run: npm run build --if-present
+      env:
+        CI: false
     - run: npm test
 
